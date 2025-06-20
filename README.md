@@ -77,6 +77,8 @@ Verify the setup by accessing the ELB DNS name to confirm load-balanced access t
 
 ![Screenshot from 2025-06-19 21-16-15](https://github.com/user-attachments/assets/1e430b93-53f8-4348-b0b2-78a4d05689eb)
 
+![image](https://github.com/user-attachments/assets/62404004-f389-4d97-b8fa-b6c60202d1c0)
+
 ![Screenshot from 2025-06-19 22-05-33](https://github.com/user-attachments/assets/e3b82378-d1b7-4692-a573-f5e01ba8ddc9)
 
 ## **Configuring Reverse proxy on Front end to listen Port 80 **
