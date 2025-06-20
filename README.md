@@ -62,7 +62,7 @@ Start application: sudo npm start
 
 ![image](https://github.com/user-attachments/assets/5d6bb094-713e-401f-bda3-3bf273004130)
 
-Implementing load balancing to divide traffic.
+**Implementing load balancing to divide traffic.**
 
 Creat AMI template images for both the frontend and backend instances, then launch new instances from these templates.
 Create Target groups for both backend and frontend instaces seperately.
@@ -79,13 +79,32 @@ Verify the setup by accessing the ELB DNS name to confirm load-balanced access t
 
 ![Screenshot from 2025-06-19 22-05-33](https://github.com/user-attachments/assets/e3b82378-d1b7-4692-a573-f5e01ba8ddc9)
 
-Integrating a custom domain using Cloudflare.
+## **Configuring Reverse proxy on Front end to listen Port 80 **
+
+![Screenshot from 2025-06-19 20-37-27](https://github.com/user-attachments/assets/3357a5d3-640e-4ba4-9f3b-1366476847c5)
+
+
+
+**Integrating a custom domain using Cloudflare.**
 
 Purchased the domain: munisekar.com from https://www.cloudflare.com/
 Linked the domain with Cloudflare by updating cloudflair's nameservers to Cloudflare's.
-Created a CNAME record for AWS ELB DNS name pointing to munisekar.com in Cloudflare.
+Created a CNAME record for AWS ELB DNS name pointing to **http://travel.munisekar.com** in Cloudflare.
 Created an SSL certificate using AWS Certificate Manager (ACM) and attached it to the Elastic Load Balancer to enable HTTPS via Cloudflare's SSL/TLS settings.
 
 ![image](https://github.com/user-attachments/assets/76617bb0-939c-4cd7-affa-9c326eddfddc)
 
+![Screenshot from 2025-06-18 20-49-57](https://github.com/user-attachments/assets/4c3708c4-f4a3-46de-8795-ee873c1441f2)
 
+
+## **Testing final results with **http://travel.munisekar.com** 
+
+![Screenshot from 2025-06-19 21-46-30](https://github.com/user-attachments/assets/adc3a368-73a9-429f-a705-5d96a97c952f)
+
+![Screenshot from 2025-06-19 22-03-20](https://github.com/user-attachments/assets/7f51f7c7-6f5d-4b54-b0f2-1955b0f04d9f)
+
+![Screenshot from 2025-06-19 22-03-20](https://github.com/user-attachments/assets/8587b8c4-b60b-4e7c-b179-daca3a94c1d8)
+![Screenshot from 2025-06-19 22-06-57](https://github.com/user-attachments/assets/ea698a2b-7cd0-4435-b500-8f0873d8e062)
+
+
+Application executed as expected 
