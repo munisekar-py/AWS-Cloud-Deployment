@@ -71,30 +71,21 @@ Attach the target groups to the Load Balancer listener on port 80.
 Configure Health checks to ensure traffic only routes to healthy instances.
 Verify the setup by accessing the ELB DNS name to confirm load-balanced access to the application.
 
+![image](https://github.com/user-attachments/assets/5f91f09f-d032-4a64-b91b-a713b374cc3e)
 
- ** *********************************************************************************** **
- **               +--------------------------------------------+                        **
- **               |         Application Load Balancer          |                        **
- **               |                (Port 80)                   |                        **
- **               +--------------------------------------------+                        ** 
- **                       |                          |                                  **
- **              +--------+--------+         +-------+--------+                         **
- **              |                 |         |                |                         **
- **  Path: / or Host: frontend.*   |         |  Path: /api/*  |                         **
- **              |                 |         |                |                         **
- **  Target Group: Frontend-TG     |         |  Target Group: Backend-TG                **
- **              |                 |         |                |                         **
- **       +------+-----+           |     +---+------+          |                        ** 
- **       |            |           |     |          |          |                        **
-**  +----------------+ +----------------+ +----------------+ +----------------+         **
-**  | Frontend EC2-1 | | Frontend EC2-2 | | Backend EC2-1 | | Backend EC2-2 |           **
-**  +----------------+ +----------------+ +----------------+ +----------------+         **
-**        ↑                  ↑                 ↑                 ↑                      **
-**        |   (Launched from Frontend AMI)     |  (Launched from Backend AMI)           **
-**        +------------------------------------+-------------------------------+        **
-**                           Health Checks on / & /api/ respectively                    ** 
-**                                                                                      **
-**  Access via:                                                                         **
-**   → http://<ALB-DNS-Name>   → Load Balanced to Frontend or Backend                   **
-**                                                                                      **    
-**  *********************************************************************************** **
+![Screenshot from 2025-06-19 19-43-52](https://github.com/user-attachments/assets/c9a3a1de-7bfd-41d6-97ee-189a1a6ddfe8)
+
+![Screenshot from 2025-06-19 21-16-15](https://github.com/user-attachments/assets/1e430b93-53f8-4348-b0b2-78a4d05689eb)
+
+![Screenshot from 2025-06-19 22-05-33](https://github.com/user-attachments/assets/e3b82378-d1b7-4692-a573-f5e01ba8ddc9)
+
+Integrating a custom domain using Cloudflare.
+
+Purchased the domain: munisekar.com from https://www.cloudflare.com/
+Linked the domain with Cloudflare by updating cloudflair's nameservers to Cloudflare's.
+Created a CNAME record for AWS ELB DNS name pointing to munisekar.com in Cloudflare.
+Created an SSL certificate using AWS Certificate Manager (ACM) and attached it to the Elastic Load Balancer to enable HTTPS via Cloudflare's SSL/TLS settings.
+
+![image](https://github.com/user-attachments/assets/76617bb0-939c-4cd7-affa-9c326eddfddc)
+
+
