@@ -103,7 +103,6 @@ Created an SSL certificate using AWS Certificate Manager (ACM) and attached it t
 
 ![Screenshot from 2025-06-19 22-03-20](https://github.com/user-attachments/assets/7f51f7c7-6f5d-4b54-b0f2-1955b0f04d9f)
 
-![Screenshot from 2025-06-19 22-03-20](https://github.com/user-attachments/assets/8587b8c4-b60b-4e7c-b179-daca3a94c1d8)
 ![Screenshot from 2025-06-19 22-06-57](https://github.com/user-attachments/assets/ea698a2b-7cd0-4435-b500-8f0873d8e062)
 
 
