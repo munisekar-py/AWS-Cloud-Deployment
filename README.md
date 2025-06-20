@@ -45,3 +45,56 @@ Sign up and log in to MongoDB Atlas.
   Install Node.js: sudo apt install nodejs -y
   Install NPM Modules : sudo npm install
   Run Node.js application: sudo node index.js &
+
+Backend Initial Testing with EC2 Public IP
+
+![image](https://github.com/user-attachments/assets/a7db4657-7799-4f2e-87a5-986a9fbfa352)
+
+Configuring frontend and linking it to the backend.
+
+Connect to the frontend instance using SSH with the key pair.
+Clone the Repository: git clone https://github.com/munisekar-py/AWS-Cloud-Deployment.git
+Jump to Frontend directory: cd TravelMemory/frontend/
+Create .env to connect to DB: sudo vim .env
+Enter Backend public IP to link both: REACT_APP_BACKEND_URL=http://localhost:3001
+Install packages: sudo npm install
+Start application: sudo npm start
+
+![image](https://github.com/user-attachments/assets/5d6bb094-713e-401f-bda3-3bf273004130)
+
+Implementing load balancing to divide traffic.
+
+Creat AMI template images for both the frontend and backend instances, then launch new instances from these templates.
+Create Target groups for both backend and frontend instaces seperately.
+Navigate to AWS Elastic Load Balancer (ELB) and select Create Load Balancer.
+Attach the target groups to the Load Balancer listener on port 80.
+Configure Health checks to ensure traffic only routes to healthy instances.
+Verify the setup by accessing the ELB DNS name to confirm load-balanced access to the application.
+
+
+ ** *********************************************************************************** **
+ **               +--------------------------------------------+                        **
+ **               |         Application Load Balancer          |                        **
+ **               |                (Port 80)                   |                        **
+ **               +--------------------------------------------+                        ** 
+ **                       |                          |                                  **
+ **              +--------+--------+         +-------+--------+                         **
+ **              |                 |         |                |                         **
+ **  Path: / or Host: frontend.*   |         |  Path: /api/*  |                         **
+ **              |                 |         |                |                         **
+ **  Target Group: Frontend-TG     |         |  Target Group: Backend-TG                **
+ **              |                 |         |                |                         **
+ **       +------+-----+           |     +---+------+          |                        ** 
+ **       |            |           |     |          |          |                        **
+**  +----------------+ +----------------+ +----------------+ +----------------+         **
+**  | Frontend EC2-1 | | Frontend EC2-2 | | Backend EC2-1 | | Backend EC2-2 |           **
+**  +----------------+ +----------------+ +----------------+ +----------------+         **
+**        ↑                  ↑                 ↑                 ↑                      **
+**        |   (Launched from Frontend AMI)     |  (Launched from Backend AMI)           **
+**        +------------------------------------+-------------------------------+        **
+**                           Health Checks on / & /api/ respectively                    ** 
+**                                                                                      **
+**  Access via:                                                                         **
+**   → http://<ALB-DNS-Name>   → Load Balanced to Frontend or Backend                   **
+**                                                                                      **    
+**  *********************************************************************************** **
